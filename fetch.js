@@ -1,7 +1,7 @@
 /* eslint-disable prefer-const */
 
-getUsers(['mizunoshoji', 'iliakan', 'notexistuser']).then((result) =>
-  console.log(result)
+getUsers(['mizunoshoji', 'iliakan', 'notexistuser']).then((results) =>
+  console.log(results)
 );
 
 /**
@@ -10,24 +10,24 @@ getUsers(['mizunoshoji', 'iliakan', 'notexistuser']).then((result) =>
  * @returns {Object[]} Githubユーザー情報
  */
 async function getUsers(names) {
-  let users = [];
-  try {
-    for (let name of names) {
-      let response = await fetch(`https://api.github.com/users/${name}`);
-      if (response.ok) {
-        let user = await response.json();
-        users.push(user);
-      } else {
-        users.push(null);
-        let httpStatusCode = response.status;
-        console.log(
-          `HTTP ERROR : ${httpStatusCode} ${name}の取得リクエストは失敗しました。`
-        );
+  let jobs = [];
+  for (let name of names) {
+    let job = fetch(`https://api.github.com/users/${name}`).then(
+      (successResponse) => {
+        if (successResponse.status !== 200) {
+          return null;
+        } else {
+          return successResponse.json();
+        }
+      },
+      (failResponse) => {
+        return null;
       }
-    }
-
-    return users;
-  } catch (error) {
-    alert(error);
+    );
+    jobs.push(job);
   }
+
+  let results = await Promise.all(jobs);
+
+  return results;
 }
