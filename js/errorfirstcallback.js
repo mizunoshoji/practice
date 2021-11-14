@@ -27,7 +27,7 @@ setTimeout(() => {
   }
 }, 2000);
 
-// エラーファーストコールバックの記法で非同期処理のレスポンスを受け取る例
+// エラーファーストコールバックで非同期処理の成功を伝える例。
 dummyFetch('success/', (error, response) => {
   if (error) {
     console.log(
@@ -40,7 +40,7 @@ dummyFetch('success/', (error, response) => {
   }
 });
 
-// エラーファーストコールバックの記法で非同期処理の例外をキャッチする例
+// エラーファーストコールバックで非同期処理の例外をキャッチする例
 dummyFetch('failure/', (error, response) => {
   if (error) {
     console.log(
@@ -53,7 +53,7 @@ dummyFetch('failure/', (error, response) => {
   }
 });
 
-errorFirstCallBack(
+asyncTowCallBack(
   'failure/',
   (response) => {
     console.log(response);
@@ -64,9 +64,9 @@ errorFirstCallBack(
 );
 
 /**
- * エラーファーストコールバックで書かれたサンプル関数です。
+ * 非同期処理の結果を返すダミーダミー関数です。
  * @param path
- * @param callback 第一引数にエラーオブジェクト、第二引数以降にデータを受け取る関数です。
+ * @param callback エラーファーストコールバック。第一引数にエラーオブジェクト、第二引数以降にデータを受け取る関数です。
  */
 function dummyFetch(path, callback) {
   setTimeout(() => {
@@ -79,12 +79,12 @@ function dummyFetch(path, callback) {
 }
 
 /**
- * エラーファーストコールバックの記法で成功・失敗それぞれのコールバックを受け取るサンプル関数。
+ * 非同期処理の成功・失敗それぞれのコールバックを受け取るサンプル関数。
  * @param {*} path
  * @param {*} successCallback 成功した場合のコールバック関数
  * @param {*} failureCallBack 失敗した場合のコールバック関数
  */
-function errorFirstCallBack(path, successCallback, failureCallBack) {
+function asyncTowCallBack(path, successCallback, failureCallBack) {
   setTimeout(() => {
     if (path.startsWith('success/')) {
       const response = { body: 'レスポンスの本文です。' };
