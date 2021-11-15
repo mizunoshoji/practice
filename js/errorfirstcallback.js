@@ -1,3 +1,5 @@
+// 参考ページ https://jsprimer.net/basic/async/
+
 // 同期処理で例外をキャッチする例
 try {
   throw new Error('同期処理のエラー。最も基本的な例外処理。');

@@ -1,5 +1,7 @@
 /* eslint-disable prefer-const */
 
+// 参考ページ https://jsprimer.net/basic/async/
+
 getUsers(['mizunoshoji', 'iliakan', 'notexistuser']).then((results) =>
   console.log(results)
 );

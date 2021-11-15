@@ -1,5 +1,7 @@
 /* eslint-disable prefer-const */
 
+// 参考ページ https://jsprimer.net/basic/async/
+
 // asyncキーワードで非同期関数を定義でき、これは解決されたpromiseを返す関数である。値はPromiseインスタンスにラップされる。
 // ケース1: 値を返すと、その値をもつfulfilled Promiseが返される。
 async function doasyncA() {
