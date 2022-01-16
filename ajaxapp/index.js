@@ -2,9 +2,12 @@ console.log('index.js is loaded');
 
 // eslint-disable-next-line no-unused-vars
 function main() {
-  fetchUserInfo('js-primer-example').catch((error) => {
-    console.error(`非同期処理でエラーが発生: ${error}`);
-  });
+  fetchUserInfo('js-primer-example')
+    .then((userInfo) => createView(userInfo))
+    .then((view) => displayView(view))
+    .catch((error) => {
+      console.error(`エラーが発生: ${error}`);
+    });
 }
 
 // eslint-disable-next-line no-unused-vars
@@ -17,10 +20,7 @@ function fetchUserInfo(userId) {
         new Error(`${response.status}: ${response.statusText}`)
       );
     } else {
-      return response.json().then((userInfo) => {
-        const view = createView(userInfo);
-        displayView(view);
-      });
+      return response.json();
     }
   });
 }
