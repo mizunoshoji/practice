@@ -1,13 +1,14 @@
 console.log('index.js is loaded');
 
 // eslint-disable-next-line no-unused-vars
-function main() {
-  fetchUserInfo('js-primer-example')
-    .then((userInfo) => createView(userInfo))
-    .then((view) => displayView(view))
-    .catch((error) => {
-      console.error(`エラーが発生: ${error}`);
-    });
+async function main() {
+  try {
+    const userInfo = await fetchUserInfo('js-primer-example');
+    const view = createView(userInfo);
+    displayView(view);
+  } catch (error) {
+    console.error(`エラーが発生しました: ${error}`);
+  }
 }
 
 // eslint-disable-next-line no-unused-vars
@@ -43,15 +44,6 @@ function displayView(view) {
   result.innerHTML = view;
 }
 
-function escapeSpecialChars(str) {
-  return str
-    .replace(/&/g, '&amp;')
-    .replace(/</g, '&lt;')
-    .replace(/>/g, '&gt;')
-    .replace(/"/g, '&quot;')
-    .replace(/'/g, '&#039;');
-}
-
 function escapeHTML(strings, ...values) {
   return strings.reduce((result, str, i) => {
     const value = values[i - 1];
@@ -61,4 +53,13 @@ function escapeHTML(strings, ...values) {
       return result + String(value) + str;
     }
   });
+}
+
+function escapeSpecialChars(str) {
+  return str
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#039;');
 }
