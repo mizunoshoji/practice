@@ -3,7 +3,8 @@ console.log('index.js is loaded');
 // eslint-disable-next-line no-unused-vars
 async function main() {
   try {
-    const userInfo = await fetchUserInfo('js-primer-example');
+    const userId = getUserId();
+    const userInfo = await fetchUserInfo(userId);
     const view = createView(userInfo);
     displayView(view);
   } catch (error) {
@@ -11,7 +12,10 @@ async function main() {
   }
 }
 
-// eslint-disable-next-line no-unused-vars
+function getUserId() {
+  return document.getElementById('userId').value;
+}
+
 function fetchUserInfo(userId) {
   return fetch(
     `https://api.github.com/users/${encodeURIComponent(userId)}`

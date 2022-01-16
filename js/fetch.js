@@ -89,11 +89,6 @@ async function getCollections(url) {
 }
 
 async function showImagesCooper(results) {
-  const h2 = document.createElement('h2');
-  h2.textContent =
-    'クーパーヒューイット美術館APIからデータを取得して画像を表示する例';
-  document.body.append(h2);
-
   for (let i = 0; i < 3; i++) {
     const imgUrl = results.objects[i].images[0].b.url;
     console.log(imgUrl);
