@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/mizunoshoji/practice#readme",
   "devDependencies": {
+    "commander": "^8.3.0",
     "eslint": "^7.32.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-config-standard": "^16.0.3",
@@ -24,6 +25,7 @@
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-promise": "^5.1.0",
     "json-server": "^0.17.0",
+    "marked": "^4.0.10",
     "prettier": "^2.4.1"
   }
 }
