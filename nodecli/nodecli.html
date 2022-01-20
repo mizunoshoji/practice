@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="jp">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Node.js で CLI アプリ</title>
+  </head>
+  <body>
+    <h1 id="nodejs-で-cli-アプリ">Node.js で CLI アプリ</h1>
+    <h2 id="作業中のメモ">作業中のメモ</h2>
+    <ul>
+      <li>node コマンドで JS を実行する</li>
+      <li>標準出力に結果を出力する</li>
+      <li>
+        <code>console.log(process.argv);</code>を実行するとどうなる？
+        <ul>
+          <li>
+            <code>process.argv</code>は文字列型の配列を返す。
+            <ul>
+              <li>
+                node コマンドの絶対パス。Node.js
+                プロセスを開始した実行可能ファイル(executable)の絶対パス。
+              </li>
+              <li>実行された JavaScript ファイルの絶対パス</li>
+              <li>
+                追加のコマンドライン引数。node
+                コマンドでファイルを実行するときにコマンドライン引数を渡していればそれが表示される。
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li>
+        コマンドライン引数を処理しやすいようにパースする。まず変換対象のファイルのパスを取得したい。
+      </li>
+      <li>commander というライブラリを使用する。</li>
+      <li>
+        前提確認
+        <ul>
+          <li>npm init</li>
+          <li>CommonJS モジュール / ECMAScript モジュール</li>
+        </ul>
+      </li>
+      <li>Node.js の fs モジュール</li>
+      <li>
+        fs
+        モジュールでファイルを非同期または同期で読み込む処理、エラーハンドリング含めて。
+      </li>
+      <li>commander を使用してコマンドラインで渡されたオプションを扱う</li>
+      <li>marked のオプションで出力結果の HTML を制御する</li>
+      <li>
+        Nullish coalescing 演算子(??) ES2020 --&gt; これどういう局面で使える？
+      </li>
+      <li>テスティングフレームワークとして Mocha を導入する。</li>
+      <li><code>npm test</code>でテストを実行できるようにする。</li>
+      <li>Node.js の標準モジュールの１つである assert モジュールを利用する</li>
+      <li>test/にユニットテストを書いた js ファイルを配置する</li>
+      <li>test/fixtures に期待値となるファイルを配置する</li>
+      <li>assert モジュールで結果と期待値を厳密等価で比較する</li>
+      <li>
+        ESLint が macha の関数をエラーにしてしまうので ESLint の設定で mocha
+        を使用していることを明示する。
+      </li>
+      <li>
+        ユニットテストで HMTL の結果をテストしたいとき、Prettier
+        が勝手に整形して期待値と差異が出てしまう時があるので ignore で対処する。
+      </li>
+    </ul>
+    <h2 id="使用したライブラリ">使用したライブラリ</h2>
+    <ul>
+      <li>
+        commnder
+        <ul>
+          <li>
+            <a href="https://www.npmjs.com/package/commander"
+              >https://www.npmjs.com/package/commander</a
+            >
+          </li>
+        </ul>
+      </li>
+      <li>
+        marked
+        <ul>
+          <li>
+            <a href="https://www.npmjs.com/package/marked"
+              >https://www.npmjs.com/package/marked</a
+            >
+          </li>
+          <li><a href="https://marked.js.org/">https://marked.js.org/</a></li>
+        </ul>
+      </li>
+      <li>
+        Mocha
+        <ul>
+          <li><a href="https://mochajs.org/">https://mochajs.org/</a></li>
+        </ul>
+      </li>
+    </ul>
+    <h2 id="参考にしたサイト">参考にしたサイト</h2>
+    <p>
+      <a href="https://jsprimer.net/use-case/nodecli/"
+        >https://jsprimer.net/use-case/nodecli/</a
+      >
+    </p>
+  </body>
+</html>
