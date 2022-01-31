@@ -30,7 +30,7 @@ export class TodoListModel extends EventEmitter {
    * @param {Function} listener
    */
   onChange(listener) {
-    this.addEventListener('change');
+    this.addEventListener('change', listener);
   }
 
   /**
