@@ -14,20 +14,25 @@ export class App {
     const containerElement = document.querySelector('#js-todo-list');
     const todoItemCountElement = document.querySelector('#js-todo-count');
 
-    // TodoListModelの状態が更新されたら表示を更新する処理の定義
+    // TodoListModelの状態が更新されたら表示を更新する処理(イベントリスナー)の定義
     this.todoListModel.onChange(() => {
       const todoListElement = element`<ul />`;
       const todoItems = this.todoListModel.getTodoItems();
-      console.log(todoItems);
       todoItems.forEach((item) => {
         const todoItemElement = item.completed
-          ? element`<li><input type="checkbox" class="checkbox" checked><s>${item.title}<s/></li>`
-          : element`<li><input type="checkbox" class="checkbox" >${item.title}</li>`;
+          ? element`<li><input type="checkbox" class="checkbox" checked><s>${item.title}<s/><button class="delete">x</button></li>`
+          : element`<li><input type="checkbox" class="checkbox" >${item.title}<button class="delete">x</button></li>`;
         const inputCheckboxElement = todoItemElement.querySelector('.checkbox');
         inputCheckboxElement.addEventListener('change', () => {
           this.todoListModel.updateTodo({
             id: item.id,
             completed: !item.completed,
+          });
+        });
+        const deleteButtonElement = todoItemElement.querySelector('.delete');
+        deleteButtonElement.addEventListener('click', () => {
+          this.todoListModel.deleteTodo({
+            id: item.id,
           });
         });
         todoListElement.appendChild(todoItemElement);
