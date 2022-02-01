@@ -46,6 +46,9 @@ export class TodoListModel extends EventEmitter {
    * @param {TodoItemModel} todoItem
    */
   addTodo(todoItem) {
+    if (todoItem.isEmptyTitle()) {
+      return;
+    }
     this.items.push(todoItem);
     this.emitChange();
   }

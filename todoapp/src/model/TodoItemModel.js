@@ -10,4 +10,12 @@ export class TodoItemModel {
     this.title = title;
     this.completed = completed;
   }
+
+  /**
+   * Todoのタイトルが空かどうかを判定する
+   * @returns {boolean}
+   */
+  isEmptyTitle() {
+    return this.title.length === 0;
+  }
 }
