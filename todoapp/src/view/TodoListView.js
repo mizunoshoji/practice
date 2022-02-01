@@ -7,7 +7,7 @@ export class TodoListView {
    * @param {TodoItemModel[]} todoItems TodoItemModelの配列
    * @param {function({id:string, completed:boolean})} onUpdateTodo チェックボックスのchangeイベントリスナー関数
    * @param {function({id:string})} onDeleteTodo 削除ボタンのclickイベントリスナー関数
-   * @returns {Element} TodoItemModelの配列に対応した対応したリストのHTML
+   * @returns {Element} TodoItemModelの配列に対応したリストのHTML
    */
   createElement(todoItems, { onUpdateTodo, onDeleteTodo }) {
     const todoListElement = element`<ul />`;
