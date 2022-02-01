@@ -13,7 +13,7 @@ export class TodoListModel extends EventEmitter {
    * アイテムの合計数を返す
    * @returns {number}
    */
-  getTotalConut() {
+  getTotalCount() {
     return this.items.length;
   }
 
