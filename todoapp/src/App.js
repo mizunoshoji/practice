@@ -89,4 +89,10 @@ export class App {
     this.todoListModel.onChange(this.handleChange);
     this.formElement.addEventListener('submit', this.handleSubmit);
   }
+
+  // アプリとDOMの紐付けを解除する 登録済みのイベントリスナーを解除する
+  unmount() {
+    this.todoListModel.offChange(this.handleChange);
+    this.formElement.removeEventListener('submit', this.handleSubmit);
+  }
 }

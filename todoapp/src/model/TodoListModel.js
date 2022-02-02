@@ -34,6 +34,14 @@ export class TodoListModel extends EventEmitter {
   }
 
   /**
+   * TodoListの状態が更新されたときに呼び出されるリスナー関数を解除する
+   * @param {Function} listener
+   */
+  offChange(listener) {
+    this.removeEventListener('change', listener);
+  }
+
+  /**
    * イベント呼出 TodoListの状態が変更されたら登録されたイベントリスナーを呼び出す
    *
    */
